@@ -1,0 +1,23 @@
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual Studio 2008
+
+Project("{5F5860CE-1E56-E280-00E1-4AC79AD8B48F}") = "Blobby Volleyball", "Assembly-CSharp.csproj", "{6C891F90-957D-8E32-6CE1-60110C5CC8D9}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{6C891F90-957D-8E32-6CE1-60110C5CC8D9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6C891F90-957D-8E32-6CE1-60110C5CC8D9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6C891F90-957D-8E32-6CE1-60110C5CC8D9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6C891F90-957D-8E32-6CE1-60110C5CC8D9}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(MonoDevelopProperties) = preSolution
+		StartupItem = Assembly-CSharp.csproj
+	EndGlobalSection
+EndGlobal
