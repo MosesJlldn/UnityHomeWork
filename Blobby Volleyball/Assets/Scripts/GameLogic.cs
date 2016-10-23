@@ -4,18 +4,23 @@ using System.Collections;
 public class GameLogic : MonoBehaviour {
 
 
-	public GameObject player1;
-	public GameObject player2;
+	public GameObject player1Prefab;
+	public GameObject player2Prefab;
 	public GameObject ballPrefab;
+
 	private bool count = true;
 	private bool ballin = false;
+
+	GameObject player1;
+	GameObject player2;
+	GameObject ball;
 
 	// Use this for initialization
 	void Start () {
 		
-		Instantiate (ballPrefab, new Vector3 (-3f, 2f, 0f), Quaternion.identity);
-		Instantiate (player1, new Vector3 (-3f, 0f, 0f), Quaternion.identity);
-		Instantiate (player2, new Vector3 ( 3f, 0f, 0f), Quaternion.identity);
+		ball = Instantiate (ballPrefab, new Vector3 (-3f, 2f, 0f), Quaternion.identity) as GameObject;
+		player1 = Instantiate (player1Prefab, new Vector3 (-3f, 0f, 0f), Quaternion.identity) as GameObject;
+		player2 = Instantiate (player2Prefab, new Vector3 ( 3f, 0f, 0f), Quaternion.identity) as GameObject;
 	}
 	
 	// Update is called once per frame
@@ -29,54 +34,25 @@ public class GameLogic : MonoBehaviour {
 
 			count = !count;
 
-			//player1.transform.position = new Vector3 (-3f, 0f, 0f);
-			//player2.transform.position = new Vector3 ( 3f, 0f, 0f);
-
 			if (count) {
 				
-				Vector3 ballPos = (new Vector3 (-3f, 2f, 0f));
-
 				Destroy  (other.gameObject);
-
 				Destroy (player1);
 				Destroy (player2);
 
-				Instantiate (ballPrefab, ballPos, Quaternion.identity);
-				ballin = true;
-
-				//Instantiate (player1, new Vector3 (-3f, 0f, 0f), Quaternion.identity);
-				//Instantiate (player2, new Vector3 ( 3f, 0f, 0f), Quaternion.identity);
-
+				ball    = Instantiate (ballPrefab,    new Vector3 (-3f, 8f, 0f), Quaternion.identity) as GameObject;
+				player1 = Instantiate (player1Prefab, new Vector3 (-3f, 0f, 0f), Quaternion.identity) as GameObject;
+				player2 = Instantiate (player2Prefab, new Vector3 ( 3f, 0f, 0f), Quaternion.identity) as GameObject;
 			} else {
-				
-				Vector3 ballPos = (new Vector3 (3f, 2f, 0f));
 
 				Destroy  (other.gameObject);
-
 				Destroy (player1);
 				Destroy (player2);
 
-				Instantiate (ballPrefab, ballPos, Quaternion.identity);
-				ballin = true;
-
-				//Instantiate (player1, new Vector3 (-3f, 0f, 0f), Quaternion.identity);
-				//Instantiate (player2, new Vector3 ( 3f, 0f, 0f), Quaternion.identity);
-
+				ball =    Instantiate (ballPrefab,    new Vector3 ( 3f, 8f, 0f), Quaternion.identity) as GameObject;
+				player1 = Instantiate (player1Prefab, new Vector3 (-3f, 0f, 0f), Quaternion.identity) as GameObject;
+				player2 = Instantiate (player2Prefab, new Vector3 ( 3f, 0f, 0f), Quaternion.identity) as GameObject;
 			}
-		}
-	}
-
-	void OnTriggerStay (Collider coll1, Collider coll2) {
-
-		if (ballin && coll1.gameObject.tag.Equals("Player") && coll2.gameObject.tag.Equals("Player")) {
-
-			Destroy (coll1.gameObject);
-			Destroy (coll2.gameObject);
-
-			Instantiate (player1, new Vector3 (-3f, 0f, 0f), Quaternion.identity);
-			Instantiate (player2, new Vector3 ( 3f, 0f, 0f), Quaternion.identity);
-
-			ballin = false;
 		}
 	}
 }

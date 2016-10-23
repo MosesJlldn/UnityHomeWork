@@ -6,7 +6,7 @@ public class P2Controller : MonoBehaviour {
 	private Rigidbody rb;
 	private Rigidbody rbBall;
 	public float speed;
-	public Transform target;
+	public GameObject ball;
 	private bool contact = true;
 
 	// Use this for initialization
@@ -18,10 +18,12 @@ public class P2Controller : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		
-		if (contact && Vector3.Distance(transform.position, target.position) > 0.5f) {
+
+		float dist = Vector3.Distance (transform.position, ball.transform.position);
+
+		if (contact && (dist > 3f)) {
 			
-			transform.position = Vector3.MoveTowards (transform.position, target.position, speed * Time.deltaTime);
+			transform.position = Vector3.MoveTowards (transform.position, ball.transform.position, speed * Time.deltaTime);
 		}
 
 	}
@@ -29,8 +31,12 @@ public class P2Controller : MonoBehaviour {
 	void OnTriggerStay(Collider other) {
 
 			
-			rbBall = other.GetComponentInParent<Rigidbody> ();
-			rbBall.AddForce (new Vector3 (-4f, 2f, 0f), ForceMode.Impulse);
+		rbBall = other.GetComponentInParent<Rigidbody> ();
+
+		if (rbBall != null) {
+			
+			rbBall.AddForce (new Vector3 (-2f, 1.5f, 0f), ForceMode.Impulse);	
+		}
 	}
 
 	void OnTriggerEnter(Collider other) {

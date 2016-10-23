@@ -36,11 +36,15 @@ public class P1Controller : MonoBehaviour {
 
 	void OnTriggerStay(Collider other) {
 			
-			float verticalMovement = Input.GetAxis ("Vertical");
+		float verticalMovement = Input.GetAxis ("Vertical");
 
-			movement.z = verticalMovement;
+		movement.z = verticalMovement;
 
-			rbBall = other.GetComponentInParent<Rigidbody> ();
-			rbBall.AddForce (new Vector3 (4f, 2f, movement.z/10f), ForceMode.Impulse);
+		rbBall = other.GetComponentInParent<Rigidbody> ();
+			
+		if (rbBall != null) {
+			
+			rbBall.AddForce (new Vector3 (2, 1.5f, movement.z / 10f), ForceMode.Impulse);
+		}
 	}
 }
